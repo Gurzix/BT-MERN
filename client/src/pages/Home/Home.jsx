@@ -1,20 +1,47 @@
 import React from "react";
 import "./home.scss";
+import { SampleEx } from "../SampleEx/SampleEx";
+import { Link } from "react-router-dom";
 
 export const Home = () => {
+  const user = false;
   return (
-    <div>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure officia,
-      porro consequuntur, harum ea tenetur, quam illum animi repellendus
-      asperiores quasi doloribus nobis aliquid! Ea maxime nisi minus laudantium,
-      quas aliquam sint corporis rerum eaque ullam, sapiente deleniti quos ipsa
-      cumque fuga autem porro! Architecto ducimus cum natus suscipit explicabo!
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Soluta, suscipit
-      rem ex voluptates tenetur eum incidunt porro at perspiciatis omnis
-      quibusdam asperiores, dolorum sed accusamus saepe et quisquam, nostrum ab
-      perferendis blanditiis culpa tempore harum! A nemo id eaque natus
-      perspiciatis officia aut dignissimos soluta in quis, fugit eum
-      reprehenderit ut perferendis illo iste. Repellendus, delectus.
+    <div className="home">
+      <div className="homeContainerForCards">
+        <div className="container">
+          <div className="card">
+            <div className="circle">
+              <h2>40+</h2>
+            </div>
+            <div className="content">
+              <p>Ponad setka ćwiczeń, codziennie aktualizowana o kolejne.</p>
+              <Link to="/posts">Sprawdź</Link>
+            </div>
+          </div>
+          <div className="card">
+            <div className="circle">
+              <h2>10</h2>
+            </div>
+            <div className="content">
+              <p>
+                Doświadczeni Trenerzy dbający o każdy szczegół oferowanych
+                ćwiczeń.
+              </p>
+              <Link to="/about">Poznaj nas</Link>
+            </div>
+          </div>
+          <div className="card">
+            <div className="circle">
+              <h2>130</h2>
+            </div>
+            <div className="content">
+              <p>Zweryfikowani użytkownicy korzystający z biblioteki.</p>
+              <Link to={user ? "/logoutFirst" : "/register"}>Dołącz</Link>
+            </div>
+          </div>
+        </div>
+      </div>
+      <SampleEx type={"featured"} />
     </div>
   );
 };

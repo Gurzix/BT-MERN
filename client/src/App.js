@@ -23,7 +23,7 @@ function App() {
       element: <Layout />,
       children: [
         { path: "/", element: <Home /> },
-        { path: "/excersises/:id", element: <Excersises /> },
+        { path: "/excersises", element: <Excersises /> },
         { path: "/singleEx/:id", element: <SingleEx /> },
       ],
     },
