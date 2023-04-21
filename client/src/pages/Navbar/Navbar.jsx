@@ -20,12 +20,12 @@ export const Navbar = () => {
             </Link>
           </li>
           <li className="topListItem">
-            <Link className="link" to="/aboutUs">
+            <Link className="link" to="/about">
               O nas
             </Link>
           </li>
           <li className="topListItem">
-            <Link className="link" to="/excersises/1">
+            <Link className="link" to="/excersises">
               Ćwiczenia
             </Link>
           </li>

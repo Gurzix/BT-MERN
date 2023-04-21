@@ -6,31 +6,35 @@ export const SampleEx = () => {
   const data = [
     {
       id: 1,
-      title: "Podania i stanie na rekach",
+      title: "Podania iadf dfmnds na rekach",
       img: "https://images.pexels.com/photos/61143/pexels-photo-61143.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       categories: "trening motoryka",
+      desc: "sadnasjndjkabdfknadsbvknasdbvknba jsdfbskndfbkasdbfk jsdbfjkasdbfksb",
     },
     {
       id: 2,
-      title: "Podania i stanie na rekach",
+      title: "Podania ijnfkbashbgjkasbh",
       img: "https://images.pexels.com/photos/61143/pexels-photo-61143.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       categories: "trening motoryka",
+      desc: "sadnasjndjkabdfknadsbvknasdbvknba jsdfbskndfbkasdbfk jsdbfjkasdbfksb",
     },
     {
       id: 3,
-      title: "Podania i stanie na rekach",
+      title: "Podajlefjwrgek;el",
       img: "https://images.pexels.com/photos/61143/pexels-photo-61143.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       categories: "trening motoryka",
+      desc: "sadnasjndjkabdfknadsbvknasdbvknba jsdfbskndfbkasdbfk jsdbfjkasdbfksb",
     },
     {
       id: 4,
       title: "Podania i stanie na rekach",
       img: "https://images.pexels.com/photos/61143/pexels-photo-61143.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       categories: ["trening motoryka"],
+      desc: "sadnasjndjkabdfknadsbvknasdbvknba jsdfbskndfbkasdbfk jsdbfjkasdbfksb",
     },
   ];
 
-  const newData = data.sort(() => 0.5 - Math.random()).slice(0, 3);
+  const newData = data.sort(() => 0.5 - Math.random()).slice(0, 4);
   return (
     <div className="sampleEx">
       <h2>Przykładowe ćwiczenia</h2>

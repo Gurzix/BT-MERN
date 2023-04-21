@@ -5,13 +5,13 @@ import { Navbar } from "./pages/Navbar/Navbar";
 import { Footer } from "./pages/Footer/Footer";
 import { Excersises } from "./pages/Excersises/Excersises";
 import { SingleEx } from "./pages/SingleEx/SingleEx";
-import { Header } from "./pages/Header/Header";
+import SubExcersisesPage from "./pages/subExcersisesPage/SubExcersisesPage";
+
 function App() {
   const Layout = () => {
     return (
       <div className="app">
         <Navbar />
-        <Header />
         <Outlet />
         <Footer />
       </div>
@@ -24,7 +24,8 @@ function App() {
       children: [
         { path: "/", element: <Home /> },
         { path: "/excersises", element: <Excersises /> },
-        { path: "/singleEx/:id", element: <SingleEx /> },
+        { path: "/singleEx", element: <SingleEx /> },
+        { path: "/subEx", element: <SubExcersisesPage /> },
       ],
     },
   ]);

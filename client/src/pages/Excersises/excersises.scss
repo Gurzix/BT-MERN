@@ -1,0 +1,70 @@
+.excersises {
+  display: flex;
+  margin-top: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+  h2 {
+    font-family: "Varela Round";
+    letter-spacing: 3px;
+  }
+  .inputContainer {
+    margin-top: 30px;
+    flex-basis: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    .inputEx {
+      width: 30%;
+      height: 25px;
+      text-align: center;
+    }
+  }
+
+  .searchMainCat {
+    display: flex;
+    justify-content: space-between;
+    flex-basis: 60%;
+
+    button {
+      font-size: 14px;
+      text-transform: uppercase;
+      padding: 10px;
+      width: 150px;
+      border: 1px solid black;
+      border-radius: 4px;
+      letter-spacing: 2px;
+      font-family: "Josefin Sans";
+      cursor: pointer;
+    }
+
+    button:nth-child(1) {
+      background-color: #487ba6;
+    }
+    button:nth-child(2) {
+      background-color: #40b71b;
+    }
+    button:nth-child(3) {
+      background-color: #8f1875;
+    }
+    button:nth-child(4) {
+      background-color: #a3651e;
+      width: 120px;
+    }
+    button:nth-child(5) {
+      background-color: #fb6757;
+    }
+    button:nth-child(6) {
+      background-color: #edea3d;
+    }
+  }
+
+  .exContainer {
+    margin-top: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
+    flex-basis: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}

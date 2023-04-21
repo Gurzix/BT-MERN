@@ -12,7 +12,7 @@ export const Card = ({ data }) => {
         </div>
         <Link
           className="link"
-          to={`/excersises?id=${data.id}&title=${data.title}`}
+          to={`/singleEx?id=${data.id}&title=${data.title}`}
         >
           <span className="postTitle">{data.title}</span>
         </Link>

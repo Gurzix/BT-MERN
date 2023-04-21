@@ -1,0 +1,69 @@
+.subExcersisesPage {
+  margin-top: 50px;
+  margin-bottom: 50px;
+
+  h2 {
+    font-family: "Varela Round";
+    letter-spacing: 3px;
+    text-align: center;
+  }
+  .top {
+    .inputContainer {
+      margin-top: 30px;
+      flex-basis: 100%;
+      height: 10vh;
+      display: flex;
+      justify-content: center;
+      .inputEx {
+        width: 30%;
+        height: 25px;
+        text-align: center;
+      }
+    }
+  }
+
+  .bottom {
+    padding: 30px 50px;
+    display: flex;
+
+    .left {
+      flex: 1;
+      position: sticky;
+      height: 100%;
+      top: 50px;
+
+      .filterItem {
+        margin-bottom: 30px;
+
+        h3 {
+          font-family: "Varela Round";
+          font-weight: 300;
+          margin-bottom: 20px;
+        }
+
+        .inputItem {
+          margin-bottom: 10px;
+          label {
+            font-family: "Varela Round";
+            font-size: 14px;
+            margin-left: 10px;
+          }
+        }
+      }
+    }
+
+    .right {
+      flex: 3;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      .catImg {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        margin-bottom: 50px;
+      }
+    }
+  }
+}
