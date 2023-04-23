@@ -5,6 +5,9 @@ import { Navbar } from "./pages/Navbar/Navbar";
 import { Footer } from "./pages/Footer/Footer";
 import { Excersises } from "./pages/Excersises/Excersises";
 import { SingleEx } from "./pages/SingleEx/SingleEx";
+import { Login } from "./pages/Login/Login";
+import { About } from "./pages/About/About";
+import { Register } from "./pages/Register/Register";
 import SubExcersisesPage from "./pages/subExcersisesPage/SubExcersisesPage";
 
 function App() {
@@ -26,6 +29,9 @@ function App() {
         { path: "/excersises", element: <Excersises /> },
         { path: "/singleEx", element: <SingleEx /> },
         { path: "/subEx", element: <SubExcersisesPage /> },
+        { path: "/about", element: <About /> },
+        { path: "/login", element: <Login /> },
+        { path: "/register", element: <Register /> },
       ],
     },
   ]);

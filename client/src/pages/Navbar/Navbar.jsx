@@ -21,7 +21,7 @@ export const Navbar = () => {
           </li>
           <li className="topListItem">
             <Link className="link" to="/about">
-              O nas
+              Trenerzy
             </Link>
           </li>
           <li className="topListItem">
@@ -35,7 +35,11 @@ export const Navbar = () => {
             </Link>
           </li>
           <li className="topListItem">
-            {user && <span style={{ color: "crimson" }}>WYLOGUJ</span>}
+            {user && (
+              <Link to="/login" style={{ color: "crimson" }}>
+                WYLOGUJ
+              </Link>
+            )}
           </li>
         </ul>
       </div>

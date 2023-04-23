@@ -1,0 +1,73 @@
+.singlePost {
+  display: flex;
+  border: 1px solid #dddd;
+  margin: 10px;
+}
+.singlePostImgWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 6;
+  padding: 25px;
+}
+.singlePostFeatures {
+  padding: 25px;
+  flex: 6;
+}
+
+.singlePostImg {
+  width: 100%;
+  height: 500px;
+  cursor: pointer;
+}
+
+.img1,
+.img2 {
+  cursor: pointer;
+  margin-top: 20px;
+  width: 25%;
+}
+
+.img2 {
+  margin-left: 20px;
+}
+
+.singlePostTitle {
+  font-family: "Lora";
+  margin-bottom: 50px;
+}
+
+.singlePostStyling {
+  flex-basis: 100%;
+  margin-top: 20px;
+  font-family: "Josefin Sans";
+}
+
+.singlePostDesc {
+  line-height: 25px;
+  margin-bottom: 20px;
+}
+.descInsideP {
+  font-weight: 200;
+}
+
+.openImg {
+  text-align: center;
+}
+
+@media screen and (max-width: 420px) {
+  .singlePost {
+    flex-direction: column;
+  }
+  .singlePostImgWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4px;
+  }
+  .singlePostImg {
+    width: 90%;
+    height: 220px;
+    cursor: pointer;
+    margin-top: 54px;
+  }
+}

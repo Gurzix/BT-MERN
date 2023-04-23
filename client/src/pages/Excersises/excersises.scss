@@ -30,31 +30,13 @@
       text-transform: uppercase;
       padding: 10px;
       width: 150px;
+      margin: 5px;
       border: 1px solid black;
       border-radius: 4px;
       letter-spacing: 2px;
       font-family: "Josefin Sans";
       cursor: pointer;
-    }
-
-    button:nth-child(1) {
-      background-color: #487ba6;
-    }
-    button:nth-child(2) {
-      background-color: #40b71b;
-    }
-    button:nth-child(3) {
-      background-color: #8f1875;
-    }
-    button:nth-child(4) {
-      background-color: #a3651e;
-      width: 120px;
-    }
-    button:nth-child(5) {
-      background-color: #fb6757;
-    }
-    button:nth-child(6) {
-      background-color: #edea3d;
+      background-color: white;
     }
   }
 
