@@ -8,10 +8,18 @@ import { SingleEx } from "./pages/SingleEx/SingleEx";
 import { Login } from "./pages/Login/Login";
 import { About } from "./pages/About/About";
 import { Register } from "./pages/Register/Register";
+import { Write } from "./pages/Write/Write";
+import { useDispatch, useSelector } from "react-redux";
 import SubExcersisesPage from "./pages/subExcersisesPage/SubExcersisesPage";
+import { useEffect } from "react";
+import { getPosts } from "./redux/apiCalls";
 
 function App() {
   const Layout = () => {
+    const dispatch = useDispatch();
+    useEffect(() => {
+      getPosts(dispatch);
+    }, []);
     return (
       <div className="app">
         <Navbar />
@@ -27,11 +35,12 @@ function App() {
       children: [
         { path: "/", element: <Home /> },
         { path: "/excersises", element: <Excersises /> },
-        { path: "/singleEx", element: <SingleEx /> },
+        { path: "/singleEx/:id", element: <SingleEx /> },
         { path: "/subEx", element: <SubExcersisesPage /> },
         { path: "/about", element: <About /> },
         { path: "/login", element: <Login /> },
         { path: "/register", element: <Register /> },
+        { path: "/write", element: <Write /> },
       ],
     },
   ]);

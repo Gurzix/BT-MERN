@@ -3,48 +3,11 @@ import "./excersises.scss";
 import { useLocation } from "react-router-dom";
 import { Card } from "../Card/Card";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export const Excersises = () => {
-  const data = [
-    {
-      id: 1,
-      title: "Podania i stanie na rekach",
-      img: "https://images.pexels.com/photos/61143/pexels-photo-61143.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      categories: "trening motoryka",
-    },
-    {
-      id: 2,
-      title: "Podania i stanie na rekach",
-      img: "https://images.pexels.com/photos/61143/pexels-photo-61143.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      categories: "trening motoryka",
-    },
-    {
-      id: 3,
-      title: "Podania i stanie na rekach",
-      img: "https://images.pexels.com/photos/61143/pexels-photo-61143.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      categories: "trening motoryka",
-    },
-    {
-      id: 4,
-      title: "Podania i stanie na rekach",
-      img: "https://images.pexels.com/photos/61143/pexels-photo-61143.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      categories: ["trening motoryka"],
-    },
-    {
-      id: 5,
-      title: "Podania i stanie na rekach",
-      img: "https://images.pexels.com/photos/61143/pexels-photo-61143.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      categories: "trening motoryka",
-    },
-    {
-      id: 6,
-      title: "Podania i stanie na rekach",
-      img: "https://images.pexels.com/photos/61143/pexels-photo-61143.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      categories: "trening motoryka",
-    },
-  ];
-
-  const [excersises, setExcersises] = useState(data);
+  const [category, setCategory] = useState("");
+  const posts = useSelector((state) => state.app.posts);
   const buttons = [
     {
       id: 1,
@@ -74,7 +37,9 @@ export const Excersises = () => {
 
   const handleButton = (e) => {
     e.preventDefault();
-    console.log(e.target.innerText);
+
+    setCategory(e.target.innerText);
+    console.log(category);
   };
   return (
     <div className="excersises">
@@ -90,16 +55,16 @@ export const Excersises = () => {
 
       <div className="searchMainCat">
         {buttons.map((btn) => (
-          <button onClick={handleButton} key={btn.id}>
-            <Link className="link" to="/subEx">
+          <div className="button" onClick={handleButton} key={btn.id}>
+            <Link className="link" to={`/subEx?catName=${category}`}>
               {btn.title}
             </Link>
-          </button>
+          </div>
         ))}
       </div>
       <div className="exContainer">
-        {excersises.map((data) => (
-          <Card data={data} key={data.id} />
+        {posts.map((data) => (
+          <Card data={data} key={data._id} />
         ))}
       </div>
     </div>

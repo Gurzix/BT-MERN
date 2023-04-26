@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./card.scss";
+import { useSelector } from "react-redux";
 export const Card = ({ data }) => {
   return (
     <div className="post">
@@ -12,7 +13,8 @@ export const Card = ({ data }) => {
         </div>
         <Link
           className="link"
-          to={`/singleEx?id=${data.id}&title=${data.title}`}
+          // to={`/singleEx?id=${data._id}&title=${data.title}`}
+          to={`/singleEx/${data._id}`}
         >
           <span className="postTitle">{data.title}</span>
         </Link>

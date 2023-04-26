@@ -23,4 +23,19 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+router.get("/", async (req, res) => {
+  const catName = req.query.cat;
+  try {
+    let posts;
+    if (catName) {
+      posts = await Post.find({ categories: $in[catName] });
+    } else {
+      posts = await Post.find();
+    }
+    res.status(200).json(posts);
+  } catch (err) {
+    res.status(500).json("Coś poszło nie tak!");
+  }
+});
+
 module.exports = router;

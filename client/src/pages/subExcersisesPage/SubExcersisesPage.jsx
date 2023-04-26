@@ -2,6 +2,8 @@ import React from "react";
 import "./subExcersisesPage.scss";
 import { useState } from "react";
 import { Card } from "../Card/Card";
+import { useLocation } from "react-router-dom";
+
 const SubExcersisesPage = () => {
   const data = [
     {
@@ -42,6 +44,10 @@ const SubExcersisesPage = () => {
     },
   ];
 
+  const query = new URLSearchParams(useLocation().search);
+  const categoryName = query.get("catName");
+  console.log(categoryName);
+
   const [maxPrice, setMaxPrice] = useState(30);
   const [sort, setSort] = useState(null);
   const [selectedSubCats, setSelectedSubCats] = useState([]);
@@ -59,7 +65,7 @@ const SubExcersisesPage = () => {
 
   return (
     <div className="subExcersisesPage">
-      <h2>TECHNIKA</h2>
+      <h2>{categoryName}</h2>
       <div className="top">
         <div className="inputContainer">
           <input

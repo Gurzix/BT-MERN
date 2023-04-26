@@ -2,10 +2,17 @@ import React from "react";
 import "./singleEx.scss";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 export const SingleEx = () => {
-  const query = new URLSearchParams(useLocation().search);
-  const id = query.get("id");
-  const title = query.get("title");
+  // const query = new URLSearchParams(useLocation().search);
+  // const id = query.get("id");
+
+  const location = useLocation();
+  const path = location.pathname.split("/")[2];
+  const posts = useSelector((state) => state.app.posts);
+
+  const post = posts.filter((post) => post._id === path);
 
   const img1 =
     "https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
@@ -44,9 +51,7 @@ export const SingleEx = () => {
             </p>
           </div>
           <div className="singlePostFeatures">
-            <h2 className="singlePostTitle">
-              Prowadzenie piłki jajami i strzał parówką
-            </h2>
+            <h2 className="singlePostTitle">{post[0].title}</h2>
             <p className="singlePostStyling">
               Część treningu:
               <span className="descInsideP">wstępna </span>{" "}
@@ -64,14 +69,7 @@ export const SingleEx = () => {
             <p className="singlePostDesc singlePostStyling">
               Przebieg ćwiczenia:
             </p>
-            <p className="descInsideP ">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi
-              tempore, saepe est aliquam, vel, sunt id cumque sint ipsa
-              reiciendis rerum eaque necessitatibus. Consequatur itaque libero,
-              explicabo modi odio eius commodi, autem corrupti nulla et porro
-              deserunt architecto delectus impedit recusandae aliquam? Vero
-              asperiores, ducimus repellendus obcaecati maiores laborum fuga!
-            </p>
+            <p className="descInsideP ">{post[0].desc}</p>
             <div>
               <p className="singlePostDesc singlePostStyling">
                 Coaching Points:

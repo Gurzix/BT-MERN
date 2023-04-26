@@ -2,45 +2,18 @@ import React from "react";
 import "./sample.scss";
 import { Link } from "react-router-dom";
 import { Card } from "../Card/Card";
+import { useSelector } from "react-redux";
 export const SampleEx = () => {
-  const data = [
-    {
-      id: 1,
-      title: "Podania iadf dfmnds na rekach",
-      img: "https://images.pexels.com/photos/61143/pexels-photo-61143.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      categories: "trening motoryka",
-      desc: "sadnasjndjkabdfknadsbvknasdbvknba jsdfbskndfbkasdbfk jsdbfjkasdbfksb",
-    },
-    {
-      id: 2,
-      title: "Podania ijnfkbashbgjkasbh",
-      img: "https://images.pexels.com/photos/61143/pexels-photo-61143.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      categories: "trening motoryka",
-      desc: "sadnasjndjkabdfknadsbvknasdbvknba jsdfbskndfbkasdbfk jsdbfjkasdbfksb",
-    },
-    {
-      id: 3,
-      title: "Podajlefjwrgek;el",
-      img: "https://images.pexels.com/photos/61143/pexels-photo-61143.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      categories: "trening motoryka",
-      desc: "sadnasjndjkabdfknadsbvknasdbvknba jsdfbskndfbkasdbfk jsdbfjkasdbfksb",
-    },
-    {
-      id: 4,
-      title: "Podania i stanie na rekach",
-      img: "https://images.pexels.com/photos/61143/pexels-photo-61143.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      categories: ["trening motoryka"],
-      desc: "sadnasjndjkabdfknadsbvknasdbvknba jsdfbskndfbkasdbfk jsdbfjkasdbfksb",
-    },
-  ];
+  const posts = useSelector((state) => state.app.posts);
 
-  const newData = data.sort(() => 0.5 - Math.random()).slice(0, 4);
+  // const newData = posts.sort(() => 0.5 - Math.random()).slice(0, 4);
+  // console.log(newData);
   return (
     <div className="sampleEx">
       <h2>Przykładowe ćwiczenia</h2>
       <div className="sampleExContainer">
-        {newData.map((data) => (
-          <Card data={data} key={data.id} />
+        {posts.slice(0, 4).map((data) => (
+          <Card data={data} key={data._id} />
         ))}
       </div>
     </div>
