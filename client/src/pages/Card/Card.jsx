@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./card.scss";
-import { useSelector } from "react-redux";
 export const Card = ({ data }) => {
   return (
     <div className="post">
@@ -9,7 +8,11 @@ export const Card = ({ data }) => {
 
       <div className="postInfo">
         <div className="postCats">
-          <span className="postCat">podania strzały</span>
+          {data.categories.map((c) => (
+            <span key={c} className="postCat" onClick={() => console.log(c)}>
+              {c}
+            </span>
+          ))}
         </div>
         <Link
           className="link"

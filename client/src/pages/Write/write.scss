@@ -1,0 +1,71 @@
+.writePost {
+    display: flex;
+    border: 1px solid #dddd;
+    margin: 10px;
+    min-height: 100vh;
+    font-family: "Lora";
+  }
+  .writePostImgWrapper {
+    flex: 6;
+    padding: 25px;
+  }
+  
+  .writeIcon {
+    width: 25px;
+    height: 25px;
+    font-size: 20px;
+    border: 1px solid;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .writePostFeatures {
+    padding: 25px;
+    flex: 6;
+  }
+  
+  .writePostImg {
+    width: 100%;
+    height: 500px;
+    cursor: pointer;
+  }
+  .inputWrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
+    margin-bottom: 20px;
+  }
+  
+  .inputWriteDesc {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin-bottom: 25px;
+  }
+  
+  .labelFont {
+    font-weight: bolder;
+  }
+  
+  .writeForm {
+    flex: 6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .writeButtonSubmit {
+    width: 200px;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 8px;
+    border: 0px;
+    padding: 4px;
+    letter-spacing: 2px;
+    background-color: teal;
+    color: white;
+  }
+  

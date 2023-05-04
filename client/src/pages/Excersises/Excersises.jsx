@@ -4,10 +4,11 @@ import { useLocation } from "react-router-dom";
 import { Card } from "../Card/Card";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useSearchParams } from "react-router-dom";
 
 export const Excersises = () => {
-  const [category, setCategory] = useState("");
   const posts = useSelector((state) => state.app.posts);
+
   const buttons = [
     {
       id: 1,
@@ -35,12 +36,6 @@ export const Excersises = () => {
     },
   ];
 
-  const handleButton = (e) => {
-    e.preventDefault();
-
-    setCategory(e.target.innerText);
-    console.log(category);
-  };
   return (
     <div className="excersises">
       <h2>BAZA ĆWICZEŃ</h2>
@@ -55,8 +50,11 @@ export const Excersises = () => {
 
       <div className="searchMainCat">
         {buttons.map((btn) => (
-          <div className="button" onClick={handleButton} key={btn.id}>
-            <Link className="link" to={`/subEx?catName=${category}`}>
+          <div className="button" key={btn.id}>
+            <Link
+              className="link"
+              to={`/subEx?catName=${btn.title.toUpperCase()}`}
+            >
               {btn.title}
             </Link>
           </div>

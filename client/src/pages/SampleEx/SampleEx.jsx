@@ -12,8 +12,8 @@ export const SampleEx = () => {
     <div className="sampleEx">
       <h2>Przykładowe ćwiczenia</h2>
       <div className="sampleExContainer">
-        {posts.slice(0, 4).map((data) => (
-          <Card data={data} key={data._id} />
+        {posts.slice(0, 4).map((data, index) => (
+          <Card key={index} data={data} />
         ))}
       </div>
     </div>

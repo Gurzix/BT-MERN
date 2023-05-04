@@ -8,7 +8,7 @@ import { SingleEx } from "./pages/SingleEx/SingleEx";
 import { Login } from "./pages/Login/Login";
 import { About } from "./pages/About/About";
 import { Register } from "./pages/Register/Register";
-import { Write } from "./pages/Write/Write";
+import Write from "./pages/Write/Write";
 import { useDispatch, useSelector } from "react-redux";
 import SubExcersisesPage from "./pages/subExcersisesPage/SubExcersisesPage";
 import { useEffect } from "react";

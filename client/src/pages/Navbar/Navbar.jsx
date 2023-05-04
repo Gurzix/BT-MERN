@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 export const Navbar = () => {
   const [user, setUser] = useState(false);
+
   return (
     <div className="top">
       <div className="topLeft">
@@ -32,6 +33,15 @@ export const Navbar = () => {
           <li className="topListItem">
             <Link className="link" to="/contact">
               Kontakt
+            </Link>
+          </li>
+          <li className="topListItem">
+            <Link
+              className="link"
+              to="/write"
+              style={{ color: "lime", fontWeight: "400" }}
+            >
+              Dodaj ćwiczenie
             </Link>
           </li>
           <li className="topListItem">
