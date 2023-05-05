@@ -1,10 +1,10 @@
 const dotenv = require("dotenv");
 dotenv.config();
+const Post = require("./models/Post");
 const express = require("express");
 const app = express();
 const uuid = require("uuid").v4;
 const mongoose = require("mongoose");
-
 const cors = require("cors");
 const { s3Uploadv2 } = require("./s3Service");
 app.use(cors());
@@ -14,28 +14,49 @@ app.use(cors());
 const multer = require("multer");
 const storage = multer.memoryStorage();
 
-// const storage = multer.diskStorage({
-//   destination: (req, file, cb) => {
-//     cb(null, "uploads");
-//   },
-//   filename: (req, file, cb) => {
-//     const { originalname } = file;
-//     cb(null, `${uuid()}-${originalname}`);
-//   },
-// });
-const upload = multer({ storage });
+const upload = multer({
+  storage,
+});
 
-// const multiUpload = upload.fields([
-//   { name: "img", maxCount: 1 },
-//   { name: "img2", maxCount: 1 },
-// ]);
-app.post("/upload", upload.array("file"), async (req, res) => {
+app.post("/upload", upload.array("file", 3), async (req, res) => {
+  const {
+    title,
+    desc,
+    coachingPoints,
+    time,
+    howManyPlayers,
+    categories,
+    subcategories,
+    field,
+    author,
+  } = req.body;
+
   try {
     const result = await s3Uploadv2(req.files);
-    console.log(result);
+    const post = new Post({
+      title,
+      author,
+      desc,
+      coachingPoints,
+      time,
+      howManyPlayers,
+      categories,
+      subcategories,
+      field,
+      img: result[0].Location,
+      img2: result[1] && result[1].Location,
+    });
+    const savedPost = await post.save();
+    console.log(savedPost);
     res.json({ status: "success", result });
   } catch (err) {
     console.log(err);
+  }
+});
+
+app.use((error, req, res, next) => {
+  if (error instanceof multer.MulterError) {
+    console.log(error);
   }
 });
 

@@ -6,14 +6,30 @@ const region = process.env.BUCKET_REGION;
 const accessKeyId = process.env.BUCKET_ACCESS_KEY;
 const secretAccessKey = process.env.BUCKET_SECRET_KEY;
 
-exports.s3Uploadv2 = async (files) => {
+// exports.s3Uploadv2 = async (file) => {
+//   const s3 = new S3({
+//     region,
+//     accessKeyId,
+//     secretAccessKey,
+//   });
+
+//   const params = {
+//     Bucket: process.env.BUCKET_NAME,
+//     Key: `uploads/${uuid()}-${file.originalname}`,
+//     Body: file.buffer,
+//   };
+
+//   return await s3.upload(params).promise();
+// };
+
+exports.s3Uploadv2 = async (file) => {
   const s3 = new S3({
     region,
     accessKeyId,
     secretAccessKey,
   });
 
-  const params = files.map((file) => {
+  const params = file.map((file) => {
     return {
       Bucket: process.env.BUCKET_NAME,
       Key: `uploads/${uuid()}-${file.originalname}`,
