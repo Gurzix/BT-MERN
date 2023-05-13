@@ -13,13 +13,8 @@ export const SingleEx = () => {
   const posts = useSelector((state) => state.app.posts);
 
   const post = posts.filter((post) => post._id === path);
-
-  const img1 =
-    "https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
-  const img2 =
-    "https://images.pexels.com/photos/61143/pexels-photo-61143.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
-
-  const [selectedImg, setSelectedImg] = useState(img2);
+  console.log(post);
+  const [selectedImg, setSelectedImg] = useState(post[0].img);
   const handleImg = (e) => {
     window.open(e.target.src);
   };
@@ -35,16 +30,16 @@ export const SingleEx = () => {
               alt=""
             />
             <img
-              src="https://images.pexels.com/photos/61143/pexels-photo-61143.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              src={post[0].img}
               alt=""
               className="img1"
-              onClick={(e) => setSelectedImg(img2)}
+              onClick={(e) => setSelectedImg(post[0].img)}
             />
             <img
-              src="https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              src={post[0].img2}
               alt=""
               className="img2"
-              onClick={(e) => setSelectedImg(img1)}
+              onClick={(e) => setSelectedImg(post[0].img2)}
             />
             <p className="singlePostStyling openImg">
               (kliknij obrazek żeby powiększyć)

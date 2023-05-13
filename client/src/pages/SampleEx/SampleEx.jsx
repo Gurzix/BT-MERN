@@ -12,7 +12,7 @@ export const SampleEx = () => {
     <div className="sampleEx">
       <h2>Przykładowe ćwiczenia</h2>
       <div className="sampleExContainer">
-        {posts.slice(0, 4).map((data, index) => (
+        {posts.slice(1, 5).map((data, index) => (
           <Card key={index} data={data} />
         ))}
       </div>

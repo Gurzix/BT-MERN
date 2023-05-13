@@ -23,7 +23,9 @@ export const Card = ({ data }) => {
         </Link>
 
         <hr />
-        <span className="postDate">31-03-2023</span>
+        <span className="postDate">
+          {new Date(data.createdAt).toLocaleDateString()}
+        </span>
       </div>
       <p className="postDesc">{data.desc}</p>
     </div>

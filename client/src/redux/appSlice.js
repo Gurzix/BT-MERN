@@ -9,6 +9,7 @@ export const appSlice = createSlice({
     pending: false,
     error: false,
     posts: [],
+    categories: [],
   },
   reducers: {
     actionStart: (state) => {
@@ -18,6 +19,10 @@ export const appSlice = createSlice({
       state.pending = false;
       state.posts = action.payload;
     },
+    fetchCategoriesSuccess: (state, action) => {
+      state.pending = false;
+      state.categories = action.payload;
+    },
     actionError: (state) => {
       state.error = true;
       state.pending = false;
@@ -25,6 +30,11 @@ export const appSlice = createSlice({
   },
 });
 
-export const { actionStart, actionError, fetchPostsSuccess } = appSlice.actions;
+export const {
+  actionStart,
+  actionError,
+  fetchPostsSuccess,
+  fetchCategoriesSuccess,
+} = appSlice.actions;
 
 export default appSlice.reducer;

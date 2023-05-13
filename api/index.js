@@ -18,7 +18,7 @@ const upload = multer({
   storage,
 });
 
-app.post("/upload", upload.array("file", 3), async (req, res) => {
+app.post("/upload", upload.array("file", 2), async (req, res) => {
   const {
     title,
     desc,
@@ -30,6 +30,14 @@ app.post("/upload", upload.array("file", 3), async (req, res) => {
     field,
     author,
   } = req.body;
+
+  // const categories2 = categories
+  //   .split(" ")
+  //   .filter((word) => word.trim() !== ",");
+
+  // const subcategories2 = subcategories
+  //   .split(" ")
+  //   .filter((word) => word.trim() !== ",");
 
   try {
     const result = await s3Uploadv2(req.files);

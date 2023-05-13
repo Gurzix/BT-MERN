@@ -14,6 +14,7 @@ const Write = () => {
   const [desc, setDesc] = useState("");
   const [coachingPoints, setCoachingPoints] = useState("");
   const [author, setAuthor] = useState("");
+  console.log(categories);
 
   // console.log(file);
   // const handleSubmit = async (e) => {
@@ -149,10 +150,14 @@ const Write = () => {
               name="categories"
               type="text"
               id="writePartOfTraining"
-              onChange={(e) =>
-                setCategories(
-                  e.target.value.split(" ").filter((word) => word.trim() !== "")
-                )
+              onChange={
+                (e) =>
+                  setCategories(
+                    e.target.value
+                      .split(" ")
+                      .filter((word) => word.trim() !== ",")
+                  )
+                // .split(" ").filter((word) => word.trim() !== "")
               }
             />
           </div>

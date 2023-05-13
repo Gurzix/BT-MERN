@@ -12,13 +12,14 @@ import Write from "./pages/Write/Write";
 import { useDispatch, useSelector } from "react-redux";
 import SubExcersisesPage from "./pages/subExcersisesPage/SubExcersisesPage";
 import { useEffect } from "react";
-import { getPosts } from "./redux/apiCalls";
+import { getPosts, getCategories } from "./redux/apiCalls";
 
 function App() {
   const Layout = () => {
     const dispatch = useDispatch();
     useEffect(() => {
       getPosts(dispatch);
+      getCategories(dispatch);
     }, []);
     return (
       <div className="app">

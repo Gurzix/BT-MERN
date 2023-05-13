@@ -5,6 +5,10 @@ const CategorySchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  subCat: {
+    type: Array,
+    required: true,
+  },
 });
 
 module.exports = mongoose.model("Category", CategorySchema);

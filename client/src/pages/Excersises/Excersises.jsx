@@ -8,6 +8,7 @@ import { useSearchParams } from "react-router-dom";
 
 export const Excersises = () => {
   const posts = useSelector((state) => state.app.posts);
+  const categories = useSelector((state) => state.app.categories);
 
   const buttons = [
     {
