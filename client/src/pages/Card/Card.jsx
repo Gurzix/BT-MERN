@@ -9,9 +9,11 @@ export const Card = ({ data }) => {
       <div className="postInfo">
         <div className="postCats">
           {data.categories.map((c) => (
-            <span key={c} className="postCat" onClick={() => console.log(c)}>
-              {c}
-            </span>
+            <Link to={`/subEx?catName=${c.toUpperCase()}`} className="link">
+              <span key={c} className="postCat">
+                {c}
+              </span>
+            </Link>
           ))}
         </div>
         <Link

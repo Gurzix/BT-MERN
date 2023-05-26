@@ -9,6 +9,7 @@ const cors = require("cors");
 const { s3Uploadv2 } = require("./s3Service");
 app.use(cors());
 
+const path = require("path");
 // multiple file upload
 
 const multer = require("multer");
@@ -27,13 +28,14 @@ app.post("/upload", upload.array("file", 2), async (req, res) => {
     howManyPlayers,
     categories,
     subcategories,
+    subcategories2,
     field,
     author,
   } = req.body;
 
-  // const categories2 = categories
-  //   .split(" ")
-  //   .filter((word) => word.trim() !== ",");
+  const categories2 = categories
+    .split(" ")
+    .filter((word) => word.trim() !== ",");
 
   // const subcategories2 = subcategories
   //   .split(" ")
@@ -48,8 +50,9 @@ app.post("/upload", upload.array("file", 2), async (req, res) => {
       coachingPoints,
       time,
       howManyPlayers,
-      categories,
+      categories: categories2,
       subcategories,
+      subcategories2,
       field,
       img: result[0].Location,
       img2: result[1] && result[1].Location,
@@ -85,6 +88,9 @@ app.use("/api/posts", postRoute);
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/categories", categoriesRoute);
+
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "ejs");
 
 app.listen("5000", () => {
   console.log("Serwer 5000 działaaa");

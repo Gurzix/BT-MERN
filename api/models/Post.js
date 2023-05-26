@@ -27,6 +27,10 @@ const PostSchema = new mongoose.Schema(
       type: String,
       required: false,
     },
+    subcategories2: {
+      type: String,
+      required: false,
+    },
     desc: {
       type: String,
       required: true,

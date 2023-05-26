@@ -19,6 +19,30 @@ const SubExcersisesPage = () => {
   let [categoryFilters, setcategoryFilters] = useState(new Set());
   const [label, setLabel] = useState("");
 
+  const [newPosts, setNewPosts] = useState(posts);
+
+  const inputChanger = (e) => {
+    e.preventDefault();
+
+    const words = e.target.value
+      .split(" ")
+      .filter((word) => word.trim() !== "");
+    const res = newPosts.filter((post) => {
+      for (let i = 0; i < words.length; i++) {
+        if (post.title.toLowerCase().includes(words[i].toLowerCase())) {
+          return true;
+        }
+      }
+      return false;
+    });
+
+    setNewPosts(res);
+
+    if (e.target.value === "") {
+      setNewPosts(posts);
+    }
+  };
+
   function updateFilters(checked, categoryFilter, i) {
     if (checked)
       setcategoryFilters((prev) => new Set(prev).add(categoryFilter));
@@ -36,6 +60,7 @@ const SubExcersisesPage = () => {
       <div className="top">
         <div className="inputContainer">
           <input
+            onChange={inputChanger}
             className="inputEx"
             id="inputEx"
             type="text"
@@ -74,6 +99,7 @@ const SubExcersisesPage = () => {
             categoryFilters={categoryFilters}
             updateFilters={updateFilters}
             categoryName={categoryName}
+            newPosts={newPosts}
           />
         </div>
       </div>

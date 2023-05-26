@@ -2,10 +2,16 @@ import React, { useState } from "react";
 import "./navbar.scss";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Link } from "react-router-dom";
-
+import { useSelector } from "react-redux";
 export const Navbar = () => {
-  const [user, setUser] = useState(false);
-
+  const appUser = useSelector((state) => state.app.user);
+  const [user, setUser] = useState(appUser);
+  console.log(user);
+  const handleLogout = (e) => {
+    e.preventDefault();
+    localStorage.removeItem("user");
+    window.location.replace("/");
+  };
   return (
     <div className="top">
       <div className="topLeft">
@@ -35,18 +41,26 @@ export const Navbar = () => {
               Kontakt
             </Link>
           </li>
-          <li className="topListItem">
-            <Link
-              className="link"
-              to="/write"
-              style={{ color: "lime", fontWeight: "400" }}
-            >
-              Dodaj ćwiczenie
-            </Link>
-          </li>
+          {user === "piotr" ? (
+            <li className="topListItem">
+              <Link
+                className="link"
+                to="/write"
+                style={{ color: "lime", fontWeight: "400" }}
+              >
+                Dodaj ćwiczenie
+              </Link>
+            </li>
+          ) : null}
+
           <li className="topListItem">
             {user && (
-              <Link to="/login" style={{ color: "crimson" }}>
+              <Link
+                className="link"
+                to="/login"
+                style={{ color: "crimson", marginLeft: "50px" }}
+                onClick={handleLogout}
+              >
                 WYLOGUJ
               </Link>
             )}
@@ -55,7 +69,7 @@ export const Navbar = () => {
       </div>
       <div className="topRight">
         {user ? (
-          <p>Witaj user!</p>
+          <p>Witaj {appUser} !</p>
         ) : (
           <ul className="topList">
             <li className="topListItem">

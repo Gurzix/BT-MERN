@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { Card } from "../Card/Card";
 import { useState } from "react";
 
-const List = ({ categoryName, categoryFilters, setSearch, search }) => {
+const List = ({ categoryName, categoryFilters, newPosts }) => {
   const posts = useSelector((state) => state.app.posts);
 
   let [filteredProducts, setFilteredProducts] = useState(null);
@@ -16,11 +16,18 @@ const List = ({ categoryName, categoryFilters, setSearch, search }) => {
 
   // console.log(filteredProducts);
 
-  filteredProducts =
-    categoryFilters.size === 0
-      ? posts
-      : posts.filter((p) => categoryFilters.has(p.subcategories));
-  console.log(filteredProducts);
+  if (categoryName.toLowerCase() === "taktyka") {
+    filteredProducts =
+      categoryFilters.size === 0
+        ? newPosts
+        : newPosts.filter((p) => categoryFilters.has(p.subcategories2));
+  } else {
+    filteredProducts =
+      categoryFilters.size === 0
+        ? newPosts
+        : newPosts.filter((p) => categoryFilters.has(p.subcategories));
+  }
+
   return (
     <div className="list">
       {filteredProducts

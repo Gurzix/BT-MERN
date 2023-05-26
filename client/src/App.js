@@ -5,9 +5,9 @@ import { Navbar } from "./pages/Navbar/Navbar";
 import { Footer } from "./pages/Footer/Footer";
 import { Excersises } from "./pages/Excersises/Excersises";
 import { SingleEx } from "./pages/SingleEx/SingleEx";
-import { Login } from "./pages/Login/Login";
+import Login from "./pages/Login/Login";
 import { About } from "./pages/About/About";
-import { Register } from "./pages/Register/Register";
+import Register from "./pages/Register/Register";
 import Write from "./pages/Write/Write";
 import { useDispatch, useSelector } from "react-redux";
 import SubExcersisesPage from "./pages/subExcersisesPage/SubExcersisesPage";
@@ -17,6 +17,7 @@ import { getPosts, getCategories } from "./redux/apiCalls";
 function App() {
   const Layout = () => {
     const dispatch = useDispatch();
+
     useEffect(() => {
       getPosts(dispatch);
       getCategories(dispatch);

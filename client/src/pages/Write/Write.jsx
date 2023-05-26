@@ -8,6 +8,7 @@ const Write = () => {
   const [partOfTraining, setPartOfTraining] = useState("");
   const [categories, setCategories] = useState([]);
   const [subcategories, setSubcategories] = useState([]);
+  const [subcategories2, setSubcategories2] = useState([]);
   const [howManyPlayers, setHowManyPlayers] = useState("");
   const [time, setTime] = useState("");
   const [field, setField] = useState("");
@@ -154,8 +155,9 @@ const Write = () => {
                 (e) =>
                   setCategories(
                     e.target.value
-                      .split(" ")
-                      .filter((word) => word.trim() !== ",")
+
+                    // .split(" ")
+                    // .filter((word) => word.trim() !== ",")
                   )
                 // .split(" ").filter((word) => word.trim() !== "")
               }
@@ -171,6 +173,18 @@ const Write = () => {
               type="text"
               id="writePartOfTraining"
               onChange={(e) => setSubcategories(e.target.value)}
+            />
+          </div>
+          <div className="inputWrapper">
+            <label className="labelFont" htmlFor="writePartOfTraining">
+              Podkategoria - 2:
+            </label>
+            <input
+              name="subcategories2"
+              className="inputWrite"
+              type="text"
+              id="writePartOfTraining"
+              onChange={(e) => setSubcategories2(e.target.value)}
             />
           </div>
           <div className="inputWrapper">

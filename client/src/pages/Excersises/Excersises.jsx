@@ -9,7 +9,7 @@ import { useSearchParams } from "react-router-dom";
 export const Excersises = () => {
   const posts = useSelector((state) => state.app.posts);
   const categories = useSelector((state) => state.app.categories);
-
+  const user = useSearchParams((state) => state.app.user);
   const buttons = [
     {
       id: 1,
@@ -37,6 +37,30 @@ export const Excersises = () => {
     },
   ];
 
+  const [newPosts, setNewPosts] = useState(posts);
+
+  const inputChanger = (e) => {
+    e.preventDefault();
+
+    const words = e.target.value
+      .split(" ")
+      .filter((word) => word.trim() !== "");
+    const res = newPosts.filter((post) => {
+      for (let i = 0; i < words.length; i++) {
+        if (post.title.toLowerCase().includes(words[i].toLowerCase())) {
+          return true;
+        }
+      }
+      return false;
+    });
+
+    setNewPosts(res);
+
+    if (e.target.value === "") {
+      setNewPosts(posts);
+    }
+  };
+
   return (
     <div className="excersises">
       <h2>BAZA ĆWICZEŃ</h2>
@@ -46,6 +70,7 @@ export const Excersises = () => {
           id="inputEx"
           type="text"
           placeholder="wyszukaj ćwiczenie"
+          onChange={inputChanger}
         />
       </div>
 
@@ -62,7 +87,7 @@ export const Excersises = () => {
         ))}
       </div>
       <div className="exContainer">
-        {posts.map((data) => (
+        {newPosts.map((data) => (
           <Card data={data} key={data._id} />
         ))}
       </div>

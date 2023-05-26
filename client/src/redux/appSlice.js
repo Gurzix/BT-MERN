@@ -1,16 +1,16 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+
+const initialState = {
+  user: localStorage.getItem("user") || null,
+  pending: false,
+  error: false,
+  posts: [],
+  categories: [],
+};
 
 export const appSlice = createSlice({
   name: "app",
-  initialState: {
-    user: {
-      username: "",
-    },
-    pending: false,
-    error: false,
-    posts: [],
-    categories: [],
-  },
+  initialState,
   reducers: {
     actionStart: (state) => {
       state.pending = true;
@@ -22,6 +22,10 @@ export const appSlice = createSlice({
     fetchCategoriesSuccess: (state, action) => {
       state.pending = false;
       state.categories = action.payload;
+    },
+    getUserSuccess: (state, action) => {
+      state.pending = false;
+      state.user = action.payload;
     },
     actionError: (state) => {
       state.error = true;
@@ -35,6 +39,7 @@ export const {
   actionError,
   fetchPostsSuccess,
   fetchCategoriesSuccess,
+  getUserSuccess,
 } = appSlice.actions;
 
 export default appSlice.reducer;

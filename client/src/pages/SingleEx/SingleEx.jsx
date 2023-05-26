@@ -29,18 +29,23 @@ export const SingleEx = () => {
               src={selectedImg}
               alt=""
             />
-            <img
-              src={post[0].img}
-              alt=""
-              className="img1"
-              onClick={(e) => setSelectedImg(post[0].img)}
-            />
-            <img
-              src={post[0].img2}
-              alt=""
-              className="img2"
-              onClick={(e) => setSelectedImg(post[0].img2)}
-            />
+            {post[0].img2 && (
+              <>
+                <img
+                  src={post[0].img}
+                  alt=""
+                  className="img1"
+                  onClick={(e) => setSelectedImg(post[0].img)}
+                />
+                <img
+                  src={post[0].img2}
+                  alt=""
+                  className="img2"
+                  onClick={(e) => setSelectedImg(post[0].img2)}
+                />
+              </>
+            )}
+
             <p className="singlePostStyling openImg">
               (kliknij obrazek żeby powiększyć)
             </p>

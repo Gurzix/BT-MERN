@@ -1,0 +1,111 @@
+.register {
+  height: calc(100vh - 50px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Lora";
+  font-weight: 600;
+  z-index: 3;
+}
+
+.registerForm {
+  width: 300px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #ff2b2b;
+  padding: 20px;
+  background-color: #e5eded;
+}
+
+.registerForm > label {
+  margin: 10px 0;
+}
+
+.registerInput {
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: white;
+  border: none;
+  border-radius: 10px;
+  font-family: "Varela Round";
+}
+
+.registerInput:focus {
+  outline: none;
+}
+
+.registerButton {
+  margin-top: 20px;
+  cursor: pointer;
+  background-color: #ff2b2b;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.error {
+  color: crimson;
+}
+
+.instructions {
+  font-family: "Lora";
+  font-size: 12px;
+  text-align: center;
+  margin: 0 auto;
+  border-radius: 0.5rem;
+  color: crimson;
+}
+
+.instructions > svg {
+  margin-right: 0.25rem;
+}
+
+.offscreen {
+  position: absolute;
+  left: -9999px;
+}
+
+.hide {
+  display: none;
+}
+
+.valid {
+  color: limegreen;
+  margin-left: 0.25rem;
+}
+
+.invalid {
+  color: red;
+  margin-left: 0.25rem;
+}
+
+.errmsg {
+  background-color: lightpink;
+  color: firebrick;
+  font-weight: bold;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  margin-top: 20px;
+}
+
+.successMsg {
+  background-color: lightgreen;
+  color: green;
+  font-weight: bold;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  margin-top: 20px;
+}
+
+.line {
+  display: inline-block;
+}
+
+:disabled {
+  opacity: 0.33;
+  pointer-events: none;
+}
