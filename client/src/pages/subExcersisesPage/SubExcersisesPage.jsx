@@ -1,18 +1,20 @@
 import React from "react";
 import "./subExcersisesPage.scss";
 import { useState, useEffect } from "react";
-import { Card } from "../Card/Card";
 import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useSearchParams } from "react-router-dom";
 import List from "../List/List";
 
 const SubExcersisesPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const categories = useSelector((state) => state.app.categories);
   const posts = useSelector((state) => state.app.posts);
   const query = new URLSearchParams(useLocation().search);
   const categoryName = query.get("catName");
-
-  const [search, setSearch] = useState(null);
 
   let [categoryFilters, setcategoryFilters] = useState(new Set());
   const [label, setLabel] = useState("");
@@ -44,24 +46,27 @@ const SubExcersisesPage = () => {
       <div className="bottom">
         <div className="left">
           <div className="filterItem">
-            <h3>Podkategorie</h3>
-            {categories[0].subCat.map(({ label, done, id }, i) => (
-              <div className="inputItem" key={i}>
-                <input
-                  className="example"
-                  type="checkbox"
-                  id={id}
-                  onClick={() => console.log(i)}
-                  value={label}
-                  onChange={(e) => {
-                    updateFilters(e.target.checked, label, i);
-                    setLabel(e.target.value);
-                  }}
-                  // onChange={handleChange}
-                />
-                <label htmlFor={id}>{label}</label>
-              </div>
-            ))}
+            {categoryName.toLowerCase() === "motoryka" ? null : (
+              <h3>Podkategorie</h3>
+            )}
+            {categories
+              .filter((cat) => cat.name.includes(categoryName.toLowerCase()))[0]
+              .subCat?.map(({ label, done, id }, i) => (
+                <div className="inputItem" key={i}>
+                  <input
+                    className="example"
+                    type="checkbox"
+                    id={id}
+                    value={label}
+                    onChange={(e) => {
+                      updateFilters(e.target.checked, label, i);
+                      setLabel(e.target.value);
+                    }}
+                    // onChange={handleChange}
+                  />
+                  <label htmlFor={id}>{label}</label>
+                </div>
+              ))}
           </div>
         </div>
         <div className="right">
@@ -69,8 +74,6 @@ const SubExcersisesPage = () => {
             categoryFilters={categoryFilters}
             updateFilters={updateFilters}
             categoryName={categoryName}
-            setSearch={setSearch}
-            search={search}
           />
         </div>
       </div>
