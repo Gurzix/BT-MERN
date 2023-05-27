@@ -277,7 +277,6 @@ router.post("/forgot-password", async (req, res) => {
     if (!oldUser) {
       return res.json("Użytkownik nie istnieje");
     }
-    console.log(oldUser.username);
     const secret = process.env.JWT_SECRET + oldUser.password;
     const token = jwt.sign({ email: oldUser.email, id: oldUser._id }, secret, {
       expiresIn: "5m",
@@ -310,6 +309,7 @@ router.post("/forgot-password", async (req, res) => {
 
 router.get("/reset-password/:id/:token", async (req, res) => {
   const { id, token } = req.params;
+  console.log(id, "to jest token", token);
   const oldUser = await User.findOne({ _id: id });
   if (!oldUser) {
     return res.json("Użytkownik nie istnieje");
@@ -317,7 +317,7 @@ router.get("/reset-password/:id/:token", async (req, res) => {
   const secret = process.env.JWT_SECRET + oldUser.password;
   try {
     const verify = jwt.verify(token, secret);
-    res.render("index", { email: verify.email });
+    res.render("reset", { email: verify.email });
   } catch {
     res.send("not verified");
   }
@@ -343,7 +343,8 @@ router.post("/reset-password/:id/:token", async (req, res) => {
       }
     );
     res.render("passwordChanged", { email: verify.email });
-  } catch {
+  } catch (err) {
+    console.log(err);
     res.send("not verified");
   }
 });

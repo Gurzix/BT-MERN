@@ -1,7 +1,7 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  user: localStorage.getItem("user") || null,
+  user: JSON.parse(localStorage.getItem("user")) || null,
   pending: false,
   error: false,
   posts: [],
@@ -25,7 +25,7 @@ export const appSlice = createSlice({
     },
     getUserSuccess: (state, action) => {
       state.pending = false;
-      state.user = action.payload;
+      state.user2 = action.payload;
     },
     actionError: (state) => {
       state.error = true;

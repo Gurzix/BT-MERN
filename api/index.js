@@ -9,6 +9,16 @@ const cors = require("cors");
 const { s3Uploadv2 } = require("./s3Service");
 app.use(cors());
 
+app.use(express.urlencoded({ extended: false }));
+app.use(
+  express.json({
+    limit: "5mb",
+    verify: (req, res, buf) => {
+      req.rawBody = buf.toString();
+    },
+  })
+);
+
 const path = require("path");
 // multiple file upload
 
@@ -83,7 +93,7 @@ mongoose
   .catch((err) => {
     console.log(err);
   });
-app.use(express.json());
+
 app.use("/api/posts", postRoute);
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);

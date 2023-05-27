@@ -30,7 +30,7 @@ export const getCategories = async (dispatch) => {
 export const getUser = async (dispatch) => {
   dispatch(actionStart());
   try {
-    const res = await axios.get("http://localhost:5000/api/auth/login");
+    const res = await axios.post("http://localhost:5000/api/auth/login");
     dispatch(getUserSuccess(res.data));
   } catch (err) {
     dispatch(actionError());

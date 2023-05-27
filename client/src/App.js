@@ -13,15 +13,19 @@ import { useDispatch, useSelector } from "react-redux";
 import SubExcersisesPage from "./pages/subExcersisesPage/SubExcersisesPage";
 import { useEffect } from "react";
 import { getPosts, getCategories } from "./redux/apiCalls";
+import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 
 function App() {
   const Layout = () => {
     const dispatch = useDispatch();
-
+    const user = useSelector((state) => state.app.user);
     useEffect(() => {
       getPosts(dispatch);
       getCategories(dispatch);
     }, []);
+
+    console.log(user);
+
     return (
       <div className="app">
         <Navbar />
@@ -43,6 +47,7 @@ function App() {
         { path: "/login", element: <Login /> },
         { path: "/register", element: <Register /> },
         { path: "/write", element: <Write /> },
+        { path: "/forgot-password", element: <ForgotPassword /> },
       ],
     },
   ]);

@@ -2,7 +2,6 @@ import "./login.scss";
 import { useRef, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
 
 const Login = () => {
   const userRef = useRef();
@@ -10,18 +9,16 @@ const Login = () => {
   const [success, setSuccess] = useState(false);
   const [errMsg, setErrMsg] = useState("");
 
-  const app = useSelector((state) => state.app);
-  console.log(app);
-  const dispatch = useDispatch();
-
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
       const res = await axios.post("http://localhost:5000/api/auth/login", {
         username: userRef.current.value,
         password: passwordRef.current.value,
       });
-      localStorage.setItem("user", res.data.username);
+      localStorage.setItem("user", JSON.stringify(res.data));
+
       window.location.replace("/");
     } catch (err) {
       setErrMsg(err.response.data);

@@ -1,12 +1,37 @@
 import React, { useState } from "react";
 import "./navbar.scss";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import LockOpenIcon from "@mui/icons-material/LockOpen";
+import LockIcon from "@mui/icons-material/Lock";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import axios from "axios";
+
 export const Navbar = () => {
   const appUser = useSelector((state) => state.app.user);
   const [user, setUser] = useState(appUser);
-  console.log(user);
+
+  // const [sub, setSub] = useState(false);
+  // const [isOpen, setOpen] = useState(false);
+
+  // useEffect(() => {
+  //   const getUser = async () => {
+  //     if (user) {
+  //       const res = await axios.get(
+  //         "http://localhost:5000/api/auth/" + user._id
+  //       );
+  //       console.log(res.data.subscription);
+  //       {
+  //         user.subscription === true
+  //           ? setSub(res.data.subscription)
+  //           : setSub(false);
+  //       }
+  //     }
+  //   };
+  //   getUser();
+  // }, []);
+
   const handleLogout = (e) => {
     e.preventDefault();
     localStorage.removeItem("user");
@@ -41,7 +66,7 @@ export const Navbar = () => {
               Kontakt
             </Link>
           </li>
-          {user === "piotr" ? (
+          {user === "bibliotekatrenera" ? (
             <li className="topListItem">
               <Link
                 className="link"
@@ -69,7 +94,7 @@ export const Navbar = () => {
       </div>
       <div className="topRight">
         {user ? (
-          <p>Witaj {appUser} !</p>
+          <p>Witaj {user.username} !</p>
         ) : (
           <ul className="topList">
             <li className="topListItem">
@@ -89,8 +114,17 @@ export const Navbar = () => {
           </ul>
         )}
         <div className="topSearchIcon">
-          <ShoppingCartIcon className="" />
-          <span>0</span>
+          {user && user.subscription === true ? (
+            <>
+              <LockOpenIcon style={{ color: "green" }} />
+            </>
+          ) : (
+            <>
+              <LockIcon style={{ color: "crimson" }} />
+              <span></span>
+            </>
+          )}
+          {/* <span>0</span> */}
         </div>
       </div>
     </div>
